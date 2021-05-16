@@ -1,0 +1,122 @@
+{% extends "common/layout.html" %}
+
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% endif %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Grades submission</h5>
+
+
+        <!--<div class="col-sm-12"> -->
+        <div class="container">
+            <table class="table table-stripped">
+                <tr>
+                    <thead>
+                        <th class="col-xs-2"> Module</th>
+                        <th class="col-xs-2"> Subject</th>
+                        <th class="col-xs-1"> Coefficient</th>
+                        <th class="col-xs-2"> TP (optional)</th>
+                        <th class="col-xs-2"> DS</th>
+                        <th class="col-xs-1"> Exam</th>
+                        <th class="col-xs-2"> Action</th>
+                    </thead>
+                </tr>
+
+
+                <tbody>
+                    {% for module in modules %}
+                    <tr>
+                        <td class="col-xs-2" rowspan="{{ module['subject']|length + 1 }}"> {{module['module']}} </td>
+                        {% for subject in module['subject'] %}
+                        <!-- TODO shouf kifèh tzid lforms-->
+                        
+                    <tr>
+                        <td class="col-xs-2">
+                            {{ subject['subject'] }}
+   
+                        </td>
+
+                        <td class="col-xs-1">
+                            {{ subject['coef'] }}
+                        </td>
+                        <form method="POST" action="">
+                            {{ forms[subject['subject']].hidden_tag() }}
+                            {{ forms[subject['subject']].pp(readonly="readonly", value=forms[subject['subject']]) }}
+                        <td class="col-xs-1">
+                            <div class="form-group mb-3">
+                                {{ forms[subject['subject']].tp(class="form-control") }}
+                                <div class="invalid-feedback">
+                                    {% for error in forms[subject['subject']].tp.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="col-xs-1">
+                            <div class="form-group mb-3">
+                                {{ forms[subject['subject']].ds(class="form-control") }}
+                                <div class="invalid-feedback">
+                                    {% for error in forms[subject['subject']].ds.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="col-xs-1">
+                            <div class="form-group mb-3">
+                                {{ forms[subject['subject']].exam(class="form-control") }}
+                                <div class="invalid-feedback">
+                                    {% for error in forms[subject['subject']].exam.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="col-xs-2">
+                            {{ forms[subject['subject']].submit(class="btn btn-outline-info") }} <input type="reset" value=" Reset  "
+                                class="btn btn-outline-danger">
+                        </td>
+                        </form>
+                    </tr>
+                    
+                    {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="row flex-row-reverse btn-group">
+            <a class="btn btn-outline-success" href="{{ url_for('admin.remit_grades_push') }}">Push grades to
+                database</a></br>
+            <a class="btn btn-outline-warning" href="{{ url_for('admin.remit_grades_step2') }}">Choose another
+                student</a></br>
+            <a class="btn btn-outline-warning" href="{{ url_for('admin.remit_grades_step1') }}">Choose another
+                class</a></br>
+            <a class="btn btn-outline-danger" href="{{ url_for('main.home') }}">Abort and Come Back Home</a></br>
+        </div>
+
+
+        <!-- </div> -->
+
+    </div>
+</div>
+
+<style>
+    .table td {
+        text-align: center;
+    }
+
+    .table th {
+        text-align: center;
+    }
+</style>
+{% endblock content %}

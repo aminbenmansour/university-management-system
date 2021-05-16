@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo_transparent.png') }}">
+
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Notety - Sign Up</title>
+    
+</head>
+
+<body>
+    <!-- Navbar-->
+    <header class="header">
+        <nav class="navbar navbar-expand navbar-light py-3">
+            <div class="container">
+                <!-- Navbar Brand -->
+                <a href="#" class="navbar-brand">
+                    <img src="{{ url_for('static', filename='logo_transparent.png') }}"
+                        alt="logo" width="230">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="row py-5 mt-4 align-items-center">
+            <!-- For Demo Purpose -->
+            <div class="col-sm-5 pr-5 mb-5 mb-md-0">
+                <img src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" alt=""
+                    class="img-fluid mb-3 d-none d-md-block">
+                
+            </div>
+
+            <!-- Registeration Form -->
+            <div class="col-sm-7 col-sm-6 ml-auto">
+
+                <div class="card-body"><h5 class="card-title">Registration Form</h5>
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                </br>
+                                    {% if form.f_name.errors %}
+                            {{ form.f_name(class="form-control bg-white border-left-0 border-sm is-invalid",
+                            placeholder="First Name") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.f_name.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.f_name(class="form-control bg-white border-left-0 border-sm", placeholder="First Name")
+                            }}
+                            {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                </br>
+
+                                    {% if form.l_name.errors %}
+                            {{ form.l_name(class="form-control bg-white border-left-0 border-sm is-invalid",
+                            placeholder="Last Name") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.l_name.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.l_name(class="form-control bg-white border-left-0 border-sm", placeholder="Last Name")
+                            }}
+                            {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="position-relative form-group">
+                        </br>
+                            {% if form.class_name.errors %}
+                            {{ form.class_name(class="custom-select form-select form-select-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.class_name.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.class_name(class="form-control form-select form-select-sm") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="position-relative form-group">
+                        </br>
+                            {% if form.email.errors %}
+                        {{ form.email(class="form-control bg-white border-left-0 border-sm is-invalid",
+                        placeholder="Email") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.email(class="form-control bg-white border-left-0 border-sm", placeholder="Email") }}
+                        {% endif %}
+                        </div>
+
+                        <div class="position-relative form-group">
+                        </br>
+                            {% if form.cin.errors %}
+                            {{ form.cin(class="form-control bg-white border-left-0 border-sm is-invalid",placeholder="CIN")
+                            }}
+                            <div class="invalid-feedback">
+                                {% for error in form.cin.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.cin(class="form-control bg-white border-left-0 border-sm", placeholder="CIN") }}
+                            {% endif %}
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                </br>
+                                    {% if form.password.errors %}
+                                {{ form.password(class="form-control bg-white border-left-0 border-sm is-invalid",
+                                placeholder="Password") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.password(class="form-control bg-white border-left-0 border-sm",
+                                placeholder="Password") }}
+                                {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                </br>
+                                    {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class="form-control bg-white border-left-0 border-sm
+                                is-invalid", placeholder="Confirm Password") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.confirm_password.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                {{ form.confirm_password(class="form-control bg-white border-left-0 border-sm",
+                                placeholder="Confirm Password") }}
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+
+                        <div class="position-relative form-check">
+                            <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
+                            <label for="exampleCheck" class="form-check-label">Accept terms & conditions</label>
+                        </div>
+                        {{ form.submit(class="btn btn-outline-primary btn-block mt-2") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+<script>
+
+    // For Demo Purpose [Changing input group text on focus]
+    $(function () {
+        $('input, select').on('focus', function () {
+            $(this).parent().find('.input-group-text').css('border-color', '#80bdff');
+        });
+        $('input, select').on('blur', function () {
+            $(this).parent().find('.input-group-text').css('border-color', '#ced4da');
+        });
+    });
+</script>
+
+</html>

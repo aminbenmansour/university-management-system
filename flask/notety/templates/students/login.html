@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Notety - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo_transparent.png') }}">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="d-flex align-items-center justify-content-center" style="height: 100%">
+        <div class="container">
+            <br>
+            <div class="row">
+                <aside class="col-sm-4">
+                </aside>
+                <aside class="col-sm-4">
+
+
+                    <div class="card">
+                        <article class="card-body">
+                            <a href="{{ url_for('students.register') }}"
+                                class="float-right btn btn-outline-primary">Sign up</a>
+                            <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                            <p>
+                                <a href="#" class="btn btn-block btn-outline-info"> <i class="fab fa-twitter"></i>
+                                    &nbsp;
+                                    Login
+                                    via Twitter</a>
+                                <a href="#" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>
+                                    &nbsp;
+                                    Login via facebook</a>
+                            </p>
+                            <hr>
+                            <form method="POST" action="">
+                                {{ form.hidden_tag() }}
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                        </div>
+                                        {% if form.email.errors %}
+                                        {{ form.email(class="form-control is-invalid", placeholder="Email") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.email(class="form-control", placeholder="Email") }}
+                                        {% endif %}
+                                    </div> <!-- input-group.// -->
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                        </div>
+                                        {% if form.password.errors %}
+                                        {{ form.password(class="form-control is-invalid", placeholder="********") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.password(class="form-control", placeholder="********") }}
+                                        {% endif %}
+                                    </div> <!-- input-group.// -->
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="form-check">
+                                            {{ form.remember(class="form-check-input") }}
+                                            {{ form.remember.label(class="form-check-label") }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form.submit(class="btn btn-outline-primary") }}
+                                        </div> <!-- form-group// -->
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <a class="small" href="#">Forgot password?</a></br>
+                                        <a class="small text-success" href="{{ url_for('admin.login') }}">Log in as Admin</a> 
+                                    </div>
+                                </div> <!-- .row// -->
+                            </form>
+                            
+                        </article>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                    {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endwith %}
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- card.// -->
+
+                </aside> <!-- col.// -->
+            </div> <!-- row.// -->
+
+        </div>
+        <!--container end.//-->
+    </div>
+
+    <br><br><br>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

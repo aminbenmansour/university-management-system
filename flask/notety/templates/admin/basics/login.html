@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    
+    <title>Notety - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='logo_transparent.png') }}">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="d-flex align-items-center justify-content-center" style="height: 100%">
+        <div class="container">
+            <br>
+            <div class="row">
+                <aside class="col-sm-4">
+                </aside>
+                <aside class="col-sm-4">
+
+
+                    <div class="card">
+                        <article class="card-body">
+                            <h4 class="card-title mb-4 mt-1">Sign in</h4>
+
+                            <hr>
+
+                            <form method="POST" action="">
+                                {{ form.hidden_tag() }}
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                        </div>
+                                        {% if form.username.errors %}
+                                        {{ form.username(class="form-control is-invalid", placeholder="Username") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.username.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.username(class="form-control", placeholder="Username") }}
+                                        {% endif %}
+                                    </div> <!-- input-group.// -->
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                        </div>
+                                        {% if form.password.errors %}
+                                        {{ form.password(class="form-control is-invalid", placeholder="********") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {% else %}
+                                        {{ form.password(class="form-control", placeholder="********") }}
+                                        {% endif %}
+                                    </div> <!-- input-group.// -->
+                                </div> <!-- form-group// -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form.submit(class="btn btn-outline-primary btn-block") }}
+                                        </div> <!-- form-group// -->
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <a class="small text-danger" href="{{ url_for('students.login') }}">Log in as Student</a>
+                                    </div>
+                                </div> <!-- .row// -->
+                            </form>
+                        </article>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                    {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endwith %}
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- card.// -->
+
+                </aside> <!-- col.// -->
+            </div> <!-- row.// -->
+
+        </div>
+        <!--container end.//-->
+    </div>
+
+    <br><br><br>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

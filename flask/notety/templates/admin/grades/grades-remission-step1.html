@@ -1,0 +1,58 @@
+{% extends "common/layout.html" %}
+
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% endif %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Grades submission</h5>
+        <div class="card-text">
+            <div class="row">
+                <div class="col-8">
+                    <div class="content-section">
+                        <form method="POST" action="">
+                            {{ form0.hidden_tag() }}
+                            <fieldset class="form-group">
+                                {% for subfield in form0.sem_choice %}
+                                <tr>
+                                    <td>{{ subfield }}</td>
+                                    <td>{{ subfield.label }}</td>
+                                </tr>
+                                {% endfor %}
+
+                                <div class="form-group mb-3">
+                                    {{ form0.class_select.label(class="form-control-label") }}
+                                    {{ form0.class_select(class="form-control form-control-lg") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form0.class_select.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    {{ form0.sem_select.label(class="form-control-label") }}
+                                    {{ form0.sem_select(class="form-control form-control-lg") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form0.sem_select.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form0.submit(class="btn btn-outline-info") }}
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

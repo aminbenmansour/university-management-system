@@ -1,0 +1,48 @@
+{% extends "common/layout.html" %}
+
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% endif %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Modules Management</h5>
+        <div class="card-text">
+            <div class="row">
+                <div class="col-8">
+                    <div class="content-section">
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <fieldset class="form-group">
+                                {% for subfield in form.sem_choice %}
+                                <tr>
+                                    <td>{{ subfield }}</td>
+                                    <td>{{ subfield.label }}</td>
+                                </tr>
+                                {% endfor %}
+
+                                <div class="form-group mb-3">
+                                    {{ form.module_name.label(class="form-control-label") }}
+                                    {{ form.module_name(class="form-control form-control-lg") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.module_name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.submit(class="btn btn-outline-info") }}
+                                    <a class="btn btn-warning" href="{{ url_for('admin.add_subject') }}">Next</a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

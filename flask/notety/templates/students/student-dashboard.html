@@ -1,0 +1,31 @@
+<!--
+<div class="container">
+  <div class="card border-success mb-3" style="max-width: 18rem;">
+    <div class="card-header">Activity</div>
+    <div class="card-body text-success">
+      <h5 class="card-title">Success card title</h5>
+      <p class="card-text">As a student you can get your results during the year through this link</p>
+      <a href="{{ url_for('students.get_result') }}" class="btn btn-outline-success">SEE RESULTS</a>
+    </div>
+  </div>
+</div>
+
+-->
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+
+      <div class="card text-center d-flex justify-content-center">
+        <div class="card-header bg-transparent border-info">Grades consultation</div>
+        <div class="card-body text-info">
+          <p class="card-text">You can get your results during the year through this link</p>
+        </div>
+        <div class="card-footer bg-transparent border-info d-flex justify-content-center">
+          <a class="btn btn-outline-info" href="{{ url_for('students.get_result') }}">SEE RESULTS</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+{% extends "common/layout.html" %}
+
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% endif %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Grades submission</h5>
+        <div class="card-text">
+            <div class="row">
+                <div class="col-8">
+                    <div class="content-section">
+                        <form method="POST" action="">
+                            {{ form01.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <div class="form-group mb-3">
+                                    {{ form01.student_select.label(class="form-control-label") }}
+                                    {{ form01.student_select(class="form-control form-control-lg") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form01.student_select.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form01.submit(class="btn btn-outline-info") }}
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

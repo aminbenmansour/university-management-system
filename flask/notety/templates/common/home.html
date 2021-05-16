@@ -1,0 +1,44 @@
+{% extends "common/layout.html" %}
+
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% else %}
+
+{% endif %}
+
+
+{% block content %}
+
+
+
+
+{% if current_user.role == 'student'%}
+
+    {% include '/students/student-dashboard.html' %}
+    
+{% endif %}
+
+
+
+
+
+
+
+
+{% if current_user.role == 'admin' %}
+
+
+<div class="container center">
+    <!--todo-->
+</div>
+
+<h1>Tasks</h1>
+
+{% include '/admin/basics/admin-dashboard.html' %}
+
+
+{% endif %}
+
+
+
+{% endblock content %}

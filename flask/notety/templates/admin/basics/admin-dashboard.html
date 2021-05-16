@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+
+          <div class="card text-center d-flex justify-content-center">
+            <div class="card-header bg-transparent border-info">System Settings</div>
+            <div class="card-body text-info">
+              <p class="card-text">This section will allow you to freely add classes, their associating modules and their associating subject fluently so students could subscribe to classes they belong to.</p>
+            </div>
+            <div class="card-footer bg-transparent border-info d-flex justify-content-center">
+                <a class="btn btn-outline-info" href="{{ url_for('admin.add_class') }}">SYSTEM SETTINGS</a>
+            </div>
+            
+          </div>
+
+        </div>
+        <div class="col">
+
+          <div class="card text-center d-flex justify-content-center">
+            <div class="card-header bg-transparent border-success d-flex justify-content-center">Grades Remission</div>
+            <div class="card-body text-success">
+              <p class="card-text">This section will allow you to assign students within different classes with their own grades. In the other hand each students will see their grades individually respecting other's privacy</p>
+            </div>
+            <div class="card-footer bg-transparent border-success d-flex justify-content-center">
+                <a class="btn btn-outline-success" href="{{ url_for('admin.remit_grades_step1') }}">REMIT GRADES</a>
+            </div>
+            
+          </div>
+
+        </div>
+        <div class="col">
+
+          <div class="card text-center d-flex justify-content-center">
+            <div class="card-header bg-transparent border-warning d-flex justify-content-center">Classes Consultation</div>
+            <div class="card-body text-warning">
+              <p class="card-text">This section will allow you view different classes with the ability to delete them individually. In case of deletion all the students associated and their grades will be deleted.</p>
+            </div>
+            <div class="card-footer bg-transparent border-warning d-flex justify-content-center">
+                <a class="btn btn-outline-warning" href="{{ url_for('admin.view_classes') }}">VIEW CLASSES</a>
+            </div>
+            
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="card text-center">
+            <div class="card-header bg-transparent border-danger d-flex justify-content-center">Students Consultation</div>
+            <div class="card-body text-danger">
+              <p class="card-text">This section will allow you view students within different classes with the ability to delete them individually. In case of deletion their associated grades will also be deleted.</p>
+            </div>
+            <div class="card-footer bg-transparent border-danger center d-flex justify-content-center">
+                <a class="btn btn-outline-danger " href="{{ url_for('admin.view_students') }}">VIEW STUDENTS</a>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+</div>

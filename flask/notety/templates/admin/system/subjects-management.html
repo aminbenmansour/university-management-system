@@ -1,0 +1,90 @@
+{% extends "common/layout.html" %}
+
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% endif %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Subjects Management</h5>
+        <div class="card-text">
+            <div class="row">
+                <div class="col-8">
+                    <div class="content-section">
+                        <form method="POST" action="">
+                            {{ form1.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <div class="mb-3">
+                                    {{ form1.module_select.label(class="form-control-label") }}
+                                    {{ form1.module_select(class="form-control form-control-lg") }}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form1.subject_name.label(class="form-control-label") }}
+                                    {{ form1.subject_name(class="form-control form-control-lg") }}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form1.coef.label(class="form-control-label") }}
+                                    {{ form1.coef(class="form-control form-control-lg") }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form1.submit(class="btn btn-outline-info") }}
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Subjects Management</h5>
+        <div class="card-text">
+            <div class="row">
+                <div class="col-8">
+                    <div class="content-section">
+                        <form method="POST" action="">
+                            {{ form2.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <div class="mb-3">
+                                    {{ form2.module_select.label(class="form-control-label") }}
+                                    {{ form2.module_select(class="form-control form-control-lg") }}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form2.subject_name.label(class="form-control-label") }}
+                                    {{ form2.subject_name(class="form-control form-control-lg") }}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{ form2.coef.label(class="form-control-label") }}
+                                    {{ form2.coef(class="form-control form-control-lg") }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form2.submit(class="btn btn-outline-info") }}
+                                </div>
+                            </fieldset>
+
+                            <div class="form-group">
+                                <a class="btn btn-warning" href="{{ url_for('admin.upload_data') }}">Apply</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

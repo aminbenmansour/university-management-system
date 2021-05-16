@@ -1,0 +1,241 @@
+{% extends "common/layout.html" %}
+{% if title %}
+{% block title %} {{ title }} {% endblock title %}
+{% endif %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Grades</h5>
+
+        {% if results %}
+        </br>
+        </br>
+        <h4>Results of 1st semester</h4>
+        </br>
+        <div class="container">
+            <table class="table table-stripped">
+
+                <thead>
+                    <tr>
+                        <th class="col-xs-2"> Module</th>
+                        <th class="col-xs-2"> Subject</th>
+                        <th class="col-xs-1"> Coefficient</th>
+                        <th class="col-xs-2"> TP</th>
+                        <th class="col-xs-2"> DS</th>
+                        <th class="col-xs-1"> Exam</th>
+                        <th class="col-xs-2"> Avg</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for module in modules1 %}
+                    <tr>
+                        <td class="col-xs-2" rowspan="{{ module['subjects']|length + 1 }}"> {{module['module_name']}}
+                        </td>
+
+                        {% for subject in module['subjects'] %}
+                        <!-- TODO shouf kifèh tzid lforms-->
+
+                    <tr>
+
+                        <td class="col-xs-2">
+                            {{ subject['subject'] }}
+
+                        </td>
+
+                        <td class="col-xs-1">
+                            {{ subject['coef'] }}
+                        </td>
+
+                        {% if subject['tp'] %}
+
+                        <td class="col-xs-1">{{ subject['tp'] }}</td>
+                        {% else %}
+                        <td class="col-xs-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </td>
+                        {% endif %}
+
+
+                        {% if subject['ds'] %}
+
+                        <td class="col-xs-1">{{ subject['ds'] }}</td>
+                        {% else %}
+                        <td class="col-xs-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </td>
+                        {% endif %}
+
+                        {% if subject['exam'] %}
+
+                        <td class="col-xs-1">{{ subject['exam'] }}</td>
+
+                        {% else %}
+                        <td class="col-xs-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </td>
+                        {% endif %}
+
+
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-peace" viewBox="0 0 16 16">
+                                <path
+                                    d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0v6.775l4.79 4.79A7 7 0 0 0 8.5 1.018zm4.084 12.273L8.5 9.207v5.775a6.97 6.97 0 0 0 4.084-1.691zM7.5 14.982V9.207l-4.084 4.084A6.97 6.97 0 0 0 7.5 14.982zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                            </svg>
+                        </td>
+                    </tr>
+
+
+
+                    {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+        </br>
+        </br>
+        <h4>Results of 2nd semester</h4>
+        </br>
+        <div class="container">
+            <table class="table table-stripped">
+
+                <thead>
+                    <tr>
+                        <th class="col-xs-2"> Module</th>
+                        <th class="col-xs-2"> Subject</th>
+                        <th class="col-xs-1"> Coefficient</th>
+                        <th class="col-xs-2"> TP</th>
+                        <th class="col-xs-2"> DS</th>
+                        <th class="col-xs-1"> Exam</th>
+                        <th class="col-xs-2"> Avg</th>
+                    </tr>
+                </thead>
+
+
+
+                <tbody>
+                    {% for module in modules2 %}
+                    <tr>
+                        <td class="col-xs-2" rowspan="{{ module['subjects']|length + 1 }}"> {{module['module_name']}}
+                        </td>
+
+                        {% for subject in module['subjects'] %}
+                        <!-- TODO shouf kifèh tzid lforms-->
+
+                    <tr>
+
+                        <td class="col-xs-2">
+                            {{ subject['subject'] }}
+
+                        </td>
+
+                        <td class="col-xs-1">
+                            {{ subject['coef'] }}
+                        </td>
+
+                        {% if subject['tp'] %}
+
+                        <td class="col-xs-1">{{ subject['tp'] }}</td>
+                        {% else %}
+                        <td class="col-xs-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </td>
+                        {% endif %}
+
+
+                        {% if subject['ds'] %}
+
+                        <td class="col-xs-1">{{ subject['ds'] }}</td>
+                        {% else %}
+                        <td class="col-xs-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </td>
+                        {% endif %}
+
+                        {% if subject['exam'] %}
+
+                        <td class="col-xs-1">{{ subject['exam'] }}</td>
+
+                        {% else %}
+                        <td class="col-xs-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </td>
+                        {% endif %}
+
+
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-peace" viewBox="0 0 16 16">
+                                <path
+                                    d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0v6.775l4.79 4.79A7 7 0 0 0 8.5 1.018zm4.084 12.273L8.5 9.207v5.775a6.97 6.97 0 0 0 4.084-1.691zM7.5 14.982V9.207l-4.084 4.084A6.97 6.97 0 0 0 7.5 14.982zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                            </svg>
+                        </td>
+                    </tr>
+
+
+
+                    {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+        {% else %}
+        <h1>You got no results yet !!</h1>
+
+        {% endif %}
+
+    </div>
+</div>
+
+<style>
+    .table td {
+        text-align: center;
+    }
+
+    .table th {
+        text-align: center;
+    }
+</style>
+{% endblock content %}

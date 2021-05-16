@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-wtf = "*"
+wtforms = "*"
+flask-bcrypt = "*"
+flask-login = "*"
+pymongo = {extras = ["tls"], version = "*"}
+flask-mail = "*"
+dnspython = "*"
+email-validator = "*"
+image = "*"
+wtforms-components = "*"
+uwsgi = "*"
+werkzeug = "*"
+certifi = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9.4"

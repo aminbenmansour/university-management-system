@@ -1,0 +1,51 @@
+version: "3.7"
+
+
+services:
+
+    flask: 
+        build: ./flask
+        container_name: flask
+        restart: on-failure
+        environment:
+            APP_ENV: "prod"
+            APP_DEBUG: "False"
+        expose: 
+            - 8080
+        links: 
+            - mongo
+
+    mongo:
+        image: mongo
+        hostname: mongodb
+        restart: always
+        ports:
+            - 27017:27017
+        environment:
+            - MONGO_INITDB_DATABASE=students-grades-management
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=example
+        volumes:
+            - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            # - mongo-data:/data/db
+
+
+    mongo-express:
+        image: mongo-express
+        restart: always
+        ports:
+            - 8081:8081
+        environment:
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=example
+
+    nginx:
+        build: ./nginx
+        container_name: nginx
+        restart: always
+        ports: 
+            - "80:80"
+
+volumes:
+    mongo-data:
+        driver: local
